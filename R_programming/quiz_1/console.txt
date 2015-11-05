@@ -1,0 +1,86 @@
+# Code executed for the programming assignment:
+
+> setwd("R_programming/quiz_1")
+> data <- read.csv("hw1_data.csv")
+> names(data)
+[1] "Ozone"   "Solar.R" "Wind"    "Temp"    "Month"   "Day"    
+> data[1:2,]
+  Ozone Solar.R Wind Temp Month Day
+1    41     190  7.4   67     5   1
+2    36     118  8.0   72     5   2
+> nrows(data)
+Error: could not find function "nrows"
+> dim(data)
+[1] 153   6
+> data[152:153,]
+    Ozone Solar.R Wind Temp Month Day
+152    18     131  8.0   76     9  29
+153    20     223 11.5   68     9  30
+> data[47,1]
+[1] 21
+> mis <- is.na(data[,1])
+> mis
+  [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+ [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [25]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [37]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE
+ [49] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [61]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+ [73] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+ [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [97] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE
+[109] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE
+[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[145] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+> sum(mis)
+[1] 37
+> oz <- data[,1]
+> bad <- is.na(oz)
+> oz <- oz[!bad]
+> mean(oz)
+[1] 42.12931
+> oz <- data[,1]; temp <- data[,4]
+> sub <- data[oz>31 && temp>90,]
+> mean(sub[,2])
+[1] NaN
+> sub
+[1] Ozone   Solar.R Wind    Temp    Month   Day    
+<0 lignes> (ou 'row.names' de longueur nulle)
+> sub <- data[oz>31 & temp>90,]
+> sub
+     Ozone Solar.R Wind Temp Month Day
+NA      NA      NA   NA   NA    NA  NA
+NA.1    NA      NA   NA   NA    NA  NA
+69      97     267  6.3   92     7   8
+70      97     272  5.7   92     7   9
+NA.2    NA      NA   NA   NA    NA  NA
+NA.3    NA      NA   NA   NA    NA  NA
+120     76     203  9.7   97     8  28
+121    118     225  2.3   94     8  29
+122     84     237  6.3   96     8  30
+123     85     188  6.3   94     8  31
+124     96     167  6.9   91     9   1
+125     78     197  5.1   92     9   2
+126     73     183  2.8   93     9   3
+127     91     189  4.6   93     9   4
+> 
+> solarR <-sub[,2]
+> solarR[is.na(solarR)] <- 0
+> solarR <-sub[,2]
+> solarR <- solarR[!is.na(solorR)]
+Error: object 'solorR' not found
+> solarR <- solarR[!is.na(solarR)]
+> solarR
+ [1] 267 272 203 225 237 188 167 197 183 189
+> mean(solarR)
+[1] 212.8
+> mean(data[data[,5]==6,4])
+[1] 79.1
+> max(data[data[,5]==5,1])
+[1] NA
+> oz <- data[data[,5]==5,1]
+> oz <- oz[!is.na(oz)]
+> max(oz)
+[1] 115
+> 
